@@ -1,0 +1,50 @@
+﻿@page "/"
+@page "/index"
+@page "/{categoryurl}"
+@using BlazorProducts.Client.Components
+@inject ICategoryService CategoryService
+@inject IProductService ProductService
+@*<Home Title="Welcome to the BlazorProducts.Client application." @attributes="AdditionalAttributes">
+        <VisitShopContent>
+            Feel free to
+            <a href="https://www.redbubble.com/people/vpecanac/works/44764889-code-maze-merch?asc=u" target="_blank">visit our shop</a>
+            any time you want.
+        </VisitShopContent>
+    </Home>
+
+    @code{
+        public Dictionary<string, object> AdditionalAttributes { get; set; } = new Dictionary<string, object>
+    {
+
+        };
+    }*@
+@if (category != null)
+{
+<ProductList /> }
+            else
+            {
+<h1>Welcome to Intelvia Store </h1>
+                <ProductList />}
+
+
+@code
+{ [Parameter]
+    public string CategoryUrl { get; set; }
+
+    private Category category = null;
+
+    protected override async Task OnParametersSetAsync()
+    {
+
+       await ProductService.LoadProductsAsync(CategoryUrl);
+
+        if (CategoryUrl != null)
+        {
+            category = CategoryService.Categories.FirstOrDefault(c => c.Url.ToLower().Equals(CategoryUrl.ToLower()));
+        }
+        else
+        {
+            category = null;
+        }
+
+    } }
