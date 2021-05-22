@@ -15,6 +15,10 @@ namespace BlazorProducts.Client.Services.CategoryService
 
         Task CreateCategory(Category category);
 
-        Task DeleteProduct(Product product);
+        Task DeleteCategory(string categoryUrl);
+
+        Task<Category> GetCategory(string categoryUrl);
+
+        Task UpdateCategory(Category category);
     }
 }

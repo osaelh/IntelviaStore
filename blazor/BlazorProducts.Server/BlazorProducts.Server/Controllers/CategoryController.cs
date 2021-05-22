@@ -30,7 +30,8 @@ namespace BlazorProducts.Server.Controllers
         [HttpGet("{categoryurl}")]
         public async Task<ActionResult<Category>> GetCategoryByUrl(string categoryUrl)
         {
-            return Ok(await _categoryService.GetCategoryByUrl(categoryUrl));
+           return Ok(await _categoryService.GetCategoryByUrl(categoryUrl));
+            
         }
 
 
@@ -45,7 +46,7 @@ namespace BlazorProducts.Server.Controllers
             return Created("", category);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{categoryurl}")]
         public async Task<IActionResult> UpdateCategory(string categoryUrl, [FromBody] Category category)
         {
             //additional product and model validation checks

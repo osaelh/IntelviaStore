@@ -1,7 +1,7 @@
 ﻿@page "/createcategory"
 @inject ICategoryService CategoryService
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Roles = "Viewer")]
+@attribute [Authorize(Roles = "Administrator")]
 
 <EditForm Model="Category" OnValidSubmit="Create" class="card card-body bg-light mt-5">
     <DataAnnotationsValidator />

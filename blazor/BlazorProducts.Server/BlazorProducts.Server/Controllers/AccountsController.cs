@@ -45,7 +45,7 @@ namespace BlazorProducts.Server.Controllers
                 return BadRequest(new RegistrationResponseDto { Errors = errors }); 
             }
 
-            await _userManager.AddToRoleAsync(user, "Viewer");
+            await _userManager.AddToRoleAsync(user, "Administrator");
             
             return StatusCode(201); 
         }
